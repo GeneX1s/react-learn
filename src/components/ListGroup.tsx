@@ -1,14 +1,20 @@
 import { Fragment, useState } from "react";
 import { MouseEvent } from "react";
 
-function ListGroup() {
-  let items = [
-    "New York",
-    "San Francisco",
-    "Manhattan",
-    "Oregon",
-    "Los Angeles",
-  ];
+//Props are reusable components
+interface Props{
+  items: string[];
+  heading: string;
+}
+
+function ListGroup({items, heading}: Props) {
+  // let items = [
+  //   "New York",
+  //   "San Francisco",
+  //   "Manhattan",
+  //   "Oregon",
+  //   "Los Angeles",
+  // ];
 
 const [selectedIndex,setSelectedIndex] = useState(-1);
 
@@ -26,7 +32,7 @@ const [selectedIndex,setSelectedIndex] = useState(-1);
   return (
     /* bisa juga pake <Fragment> */
     <>
-      <h1>List</h1>
+      <h1>{heading}</h1>
 
       {/* {items.length === 0 ? <p>No items found</p> : null} */}
 
