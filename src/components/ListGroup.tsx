@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { MouseEvent } from "react";
 
 function ListGroup() {
@@ -9,6 +9,9 @@ function ListGroup() {
     "Oregon",
     "Los Angeles",
   ];
+
+const [selectedIndex,setSelectedIndex] = useState(-1);
+
   // contoh list kosong, comment items = [] untuk kembalikan ke semula
   // items = [];
 
@@ -34,14 +37,21 @@ function ListGroup() {
 
       {/* dibawah ini contoh function yang serupa*/}
       {/* {getMessage()} */}
-{/* test */}
+      {/* test */}
       <ul className="list-group">
         {/* Contoh dinamis list group */}
         {items.map((item, index) => (
           <li
-            className="list-group-item"
+            // className="list-group-item"
+            //otomatis highlight item yang dipilih
+            className={
+              selectedIndex === index
+                ? "list-group-item active"
+                : "list-group-item"
+            }
             key={item}
-            onClick={handleClick}
+            onClick={() => {setSelectedIndex(index);}}
+            // onClick={handleClick}
             // onClick={(event) => console.log(item, index)}
           >
             {item}
