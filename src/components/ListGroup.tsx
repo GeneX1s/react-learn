@@ -2,12 +2,13 @@ import { Fragment, useState } from "react";
 import { MouseEvent } from "react";
 
 //Props are reusable components
-interface Props{
+interface Props {
   items: string[];
   heading: string;
+  onSelectItem: (item: string) => void; //optional function prop
 }
 
-function ListGroup({items, heading}: Props) {
+function ListGroup({ items, heading, onSelectItem }: Props) {
   // let items = [
   //   "New York",
   //   "San Francisco",
@@ -16,7 +17,7 @@ function ListGroup({items, heading}: Props) {
   //   "Los Angeles",
   // ];
 
-const [selectedIndex,setSelectedIndex] = useState(-1);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
 
   // contoh list kosong, comment items = [] untuk kembalikan ke semula
   // items = [];
@@ -56,7 +57,10 @@ const [selectedIndex,setSelectedIndex] = useState(-1);
                 : "list-group-item"
             }
             key={item}
-            onClick={() => {setSelectedIndex(index);}}
+            onClick={() => {
+              setSelectedIndex(index);
+              onSelectItem(item);
+            }}
             // onClick={handleClick}
             // onClick={(event) => console.log(item, index)}
           >
