@@ -1,5 +1,6 @@
 import Alert from "./Alert";
 import ListGroup from "./components/ListGroup";
+import Button from "./components/Button";
 
 function App() {
   let items = [
@@ -21,19 +22,27 @@ function App() {
     //or <Message />
 
     // ***ListGroup***
-    // <div>
-    //   <ListGroup
-    //     items={items}
-    //     heading="Cities"
-    //     onSelectItem={handleSelectItem}
-    //   />
-    // </div>
+    <>
+    <div>
+      <ListGroup
+        items={items}
+        heading="Cities"
+        onSelectItem={handleSelectItem}
+      />
+    </div>
+     <div>
+       <Alert>
+         Hello <span>World</span>
+       </Alert>
+     </div>
 
     <div>
-      <Alert>
-        Hello <span>World</span>
-      </Alert>
+      <Button
+       text = "Click me"
+      />
     </div>
+    
+    </>
   );
 }
 
